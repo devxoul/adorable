@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Adorable</title>
+</head>
+<body>
+  <textarea id="input"></textarea>
+  <textarea id="output"></textarea>
+
+  <script>
+    var input = document.getElementById('input');
+    var output = document.getElementById('output');
+
+    var unicodes = [
+      '\ua67c',
+      '\u0308',
+      '\u0306',
+      '\u030e',
+      '\u030a',
+      '\u0308',
+      '\u030c',
+      '\u0308',
+      '\u0304',
+      '\u0308',
+      '\u0310',
+      '\u0308',
+      '\u0311',
+      '\u0308',
+      '\u0306',
+      '\u0308',
+    ];
+
+    input.oninput = function (event) {
+      var value = '';
+
+      for (var i = 0; i < input.value.length; i++) {
+        var char = input.value.charAt(i);
+        value += char;
+        if (char != ' ') {
+          j = i * 2
+          value += unicodes[j % unicodes.length] + unicodes[(j + 1) % unicodes.length];
+        }
+      }
+
+      output.value = value;
+    }
+  </script>
+</body>
+</html>
